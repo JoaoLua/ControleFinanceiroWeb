@@ -1,0 +1,28 @@
+.conta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 300px;
+  padding-top: 10px;
+
+  @media(min-width: 500px) {
+    min-width: 400px;
+  }
+}
+
+.hint-text {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+// Destaque para o saldo
+.input-saldo input {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2e7d32; // Verde
+}

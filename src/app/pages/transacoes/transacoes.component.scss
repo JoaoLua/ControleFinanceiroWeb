@@ -1,0 +1,92 @@
+.page-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-card {
+  padding: 10px;
+}
+
+// --- Filtros ---
+.filtro-container {
+  display: flex;
+  flex-wrap: wrap; // Permite quebrar linha em mobile
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  .filtro-item {
+    flex: 1;
+    min-width: 200px; // Tamanho mínimo para não espremer
+  }
+
+  .filtro-actions {
+    display: flex;
+    gap: 10px;
+    height: 56px; // Altura para alinhar com os inputs
+    align-items: center;
+  }
+}
+
+// --- Toolbar e Tabela ---
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 10px 0;
+
+  h3 {
+    margin: 0;
+    color: #555;
+  }
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.table-responsive {
+  overflow-x: auto; // Scroll horizontal no mobile
+}
+
+// --- Estilos das Badges e Cores ---
+.badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  
+  &.receita {
+    background-color: #e8f5e9; // Verde claro
+    color: #2e7d32; // Verde escuro
+  }
+
+  &.despesa {
+    background-color: #ffebee; // Vermelho claro
+    color: #c62828; // Vermelho escuro
+  }
+}
+
+.category-badge {
+  border: 1px solid rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+
+// Cores do texto de valor
+.text-receita { color: #2e7d32; }
+.text-despesa { color: #c62828; }
+
+.actions-col {
+  width: 100px;
+  text-align: right;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-style: italic;
+}

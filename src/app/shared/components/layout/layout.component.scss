@@ -1,0 +1,115 @@
+/* Layout geral */
+.sidenav-container {
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidenav {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: none;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Header da sidebar */
+.menu-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  .app-icon {
+    font-size: 22px;
+  }
+}
+
+/* Lista de navegação */
+mat-nav-list {
+  padding-top: 8px;
+}
+
+/* Itens do menu */
+mat-nav-list a[mat-list-item] {
+  position: relative;
+  margin: 4px 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+
+  mat-icon {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  span {
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: rgba(63, 81, 181, 0.08);
+    transform: translateX(3px);
+  }
+}
+
+/* Item ativo */
+.active-link {
+  background-color: rgba(63, 81, 181, 0.12);
+
+  mat-icon {
+    color: #3f51b5;
+  }
+
+  span {
+    font-weight: 600;
+    color: #3f51b5;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20%;
+    height: 60%;
+    width: 4px;
+    background-color: #3f51b5;
+    border-radius: 4px;
+  }
+}
+
+/* Divisor */
+mat-divider {
+  margin: 16px 0;
+}
+
+/* Logout */
+.logout {
+  color: #c62828;
+
+  mat-icon {
+    color: #c62828;
+  }
+
+  &:hover {
+    background-color: rgba(198, 40, 40, 0.08);
+  }
+}
+
+/* Toolbar superior */
+.top-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .toolbar-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+/* Conteúdo */
+.content-wrapper {
+  padding: 24px;
+  background-color: #f5f6fa;
+  min-height: calc(100vh - 64px);
+}

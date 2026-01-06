@@ -1,0 +1,36 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 350px;
+  padding-top: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+// Estilo especial para o Color Picker
+.color-field {
+  width: 120px;
+  
+  .color-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .color-input {
+    height: 30px;
+    width: 40px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}

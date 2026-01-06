@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form-container">
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="color-field" [style.border-bottom-color]="form.value.corHexadecimal">
+        <mat-label>Cor</mat-label>
+        <div class="color-wrapper">
+          <input matInput type="color" formControlName="corHexadecimal" class="color-input">
+          <span class="color-hex">{{ form.value.corHexadecimal }}</span>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="flex-grow">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" placeholder="Ex: Alimentação">
+        <mat-error *ngIf="form.get('nome')?.invalid">Obrigatório</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="descricao" rows="2" placeholder="Detalhes opicionais..."></textarea>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" [disabled]="form.invalid || isLoading">
+    Salvar
+  </button>
+</div>

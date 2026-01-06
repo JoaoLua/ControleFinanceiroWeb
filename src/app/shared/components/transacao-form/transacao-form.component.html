@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Nova Transação</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form-container">
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let t of tipos" [value]="t">{{ t }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipo')?.invalid">Obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Conta</mat-label>
+        <mat-select formControlName="contaId">
+          <mat-option *ngFor="let c of contas" [value]="c.id">{{ c.nome }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('contaId')?.invalid">Obrigatório</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="input-valor">
+        <mat-label>Valor</mat-label>
+        <span matPrefix>R$&nbsp;</span> <input matInput type="number" formControlName="valor" placeholder="0.00">
+        <mat-error *ngIf="form.get('valor')?.invalid">Valor inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('data')?.invalid">Obrigatório</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoriaId">
+        <mat-option *ngFor="let c of categorias" [value]="c.id">
+          {{ c.nome }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('categoriaId')?.invalid">Obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição (Opcional)</mat-label>
+      <input matInput formControlName="descricao" placeholder="Ex: Compras do mês">
+      <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="actions-footer">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" [disabled]="form.invalid">
+    Salvar
+  </button>
+</div>

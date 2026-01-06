@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{titulo}}</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form" class="conta-form">
+    
+    <p class="hint-text">Crie carteiras para organizar seu dinheiro (Ex: Nubank, Cofre, Investimentos).</p>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome da Conta</mat-label>
+      <input matInput formControlName="nome" placeholder="Ex: Banco XYZ">
+      <mat-icon matSuffix>account_balance</mat-icon>
+      <mat-error *ngIf="form.get('nome')?.hasError('required')">Obrigatório</mat-error>
+      <mat-error *ngIf="form.get('nome')?.hasError('minlength')">Mínimo 3 letras</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width input-saldo">
+      <mat-label>Saldo Inicial</mat-label>
+      <span matPrefix>R$&nbsp;</span>
+      <input matInput type="number" formControlName="saldo">
+      <mat-hint>Pode ser R$ 0,00 se estiver vazia</mat-hint>
+      <mat-error *ngIf="form.get('saldo')?.hasError('required')">Obrigatório</mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()" [disabled]="isLoading">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" [disabled]="isLoading || form.invalid">
+    @if(isLoading) { <mat-spinner diameter="20"></mat-spinner> } 
+    @else { Salvar }
+  </button>
+</div>

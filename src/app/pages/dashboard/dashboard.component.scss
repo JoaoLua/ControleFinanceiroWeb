@@ -1,0 +1,230 @@
+
+// Variáveis de Cor (Ajuste conforme seu tema)
+$success-color: #2e7d32;
+$danger-color: #c62828;
+$primary-color: #3f51b5;
+$neutral-bg: #f5f7fa;
+$card-padding: 24px;
+
+.dashboard-container {
+  padding: 24px;
+  background-color: $neutral-bg; // Fundo cinza claro para destacar os cards brancos
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// --- Header ---
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .subtitle {
+    margin: 4px 0 0;
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+// --- KPI Grid (Cards do topo) ---
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.kpi-card {
+  border-radius: 12px; // Bordas mais arredondadas (estilo moderno)
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; // Sombra suave
+
+  mat-card-header {
+    display: flex;
+    flex-direction: column-reverse; // Título embaixo, subtítulo em cima
+    align-items: flex-start;
+    padding: $card-padding;
+  }
+
+  mat-card-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 8px 0 0 !important;
+  }
+  
+  mat-card-subtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  // Ícone redondo
+  .icon-bg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px; // Espaço entre ícone e texto
+    
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    &.neutral { background-color: #e3f2fd; color: $primary-color; }
+    &.success { background-color: #e8f5e9; color: $success-color; }
+    &.danger  { background-color: #ffebee; color: $danger-color; }
+    &.info    { background-color: #fff3e0; color: #ef6c00; }
+  }
+
+  .negative { color: $danger-color; }
+}
+
+// --- Conteúdo Principal (Gráfico + Tabela) ---
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr; // Gráfico ocupa 1 parte, Tabela ocupa 2 partes
+  gap: 20px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr; // Em telas menores, empilha
+  }
+}
+
+// Painéis Comuns
+.chart-panel, .table-panel {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  height: 100%; // Garante altura igual se possível
+}
+
+// Área do Gráfico
+.chart-wrapper {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+// Tabela
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 16px; // Ajuste para o botão alinhar
+}
+
+.full-width-table {
+  width: 100%;
+  
+  th.mat-header-cell {
+    font-weight: 600;
+    color: #666;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  td.mat-cell {
+    padding: 16px 8px;
+    border-bottom-color: #eee;
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+.row-title {
+  font-weight: 500;
+  color: #333;
+}
+
+.category-badge {
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #555;
+}
+
+.text-success { color: $success-color; }
+.text-danger { color: $danger-color; }
+
+.empty-state, .loading-state {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+// Mobile Tweaks
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none; // Esconde categoria no mobile para poupar espaço
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+// .dashboard {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+// }
+
+// .cards {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+//   gap: 16px;
+// }
+
+// .card {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+
+//   mat-icon {
+//     font-size: 28px;
+//   }
+
+//   strong {
+//     font-size: 20px;
+//   }
+// }
+
+// .receita { color: #2e7d32; }
+// .despesa { color: #c62828; }
+// .saldo   { color: #1565c0; }
+// .total   { color: #6a1b9a; }
+
+// .table-card {
+//   padding: 16px;
+// }
+
+// .positivo {
+//   color: #2e7d32;
+//   font-weight: 500;
+// }
+
+// .negativo {
+//   color: #c62828;
+//   font-weight: 500;
+// }

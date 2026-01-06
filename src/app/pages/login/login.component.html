@@ -1,0 +1,65 @@
+<div class="login-container">
+  <mat-card class="login-card mat-elevation-z8">
+    
+    <mat-card-header>
+      <div mat-card-avatar class="login-avatar">
+        <mat-icon>lock</mat-icon>
+      </div>
+      <mat-card-title>Bem-vindo</mat-card-title>
+      <mat-card-subtitle>Faça login para continuar</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="exemplo@email.com" autocomplete="email">
+          <mat-icon matPrefix>email</mat-icon>
+          
+          <mat-error *ngIf="emailControl?.hasError('required')">
+            O e-mail é obrigatório
+          </mat-error>
+          <mat-error *ngIf="emailControl?.hasError('email')">
+            Digite um e-mail válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hidePassword() ? 'password' : 'text'" formControlName="password" autocomplete="current-password">
+          <mat-icon matPrefix>key</mat-icon>
+          
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hidePassword()">
+            <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="passwordControl?.hasError('required')">
+            A senha é obrigatória
+          </mat-error>
+          <mat-error *ngIf="passwordControl?.hasError('minlength')">
+            A senha deve ter no mínimo 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <div class="footer-link">
+          <span>Não tem conta?</span>
+          <a routerLink="/register" mat-button color="accent">Cadastre-se</a>
+        </div>
+
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid || isLoading()">
+            @if (isLoading()) {
+              <mat-spinner diameter="24" color="accent"></mat-spinner>
+            } @else {
+              Entrar
+            }
+          </button>
+          </div>
+
+      </form>
+    </mat-card-content>
+
+    <mat-progress-bar *ngIf="isLoading()" mode="indeterminate" class="card-loader"></mat-progress-bar>
+  </mat-card>
+</div>

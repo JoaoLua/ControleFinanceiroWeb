@@ -1,0 +1,70 @@
+// Variáveis de espaçamento
+$gap: 16px;
+
+// Container principal do formulário
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  padding-top: 8px; // Um respiro para o label do primeiro input não cortar
+  min-width: 300px; // Garante que não fique muito espremido em celulares
+  
+  @media (min-width: 600px) {
+    min-width: 450px; // Fica mais largo e bonito no Desktop
+  }
+}
+
+// Classe utilitária para colocar dois inputs lado a lado
+.row {
+  display: flex;
+  gap: $gap;
+  
+  // No celular, quebra para ficar um embaixo do outro
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 0; // O gap é controlado pelo margin-bottom do form-field
+  }
+
+  // Faz os filhos ocuparem tamanhos iguais
+  > * {
+    flex: 1;
+  }
+}
+
+// Estilização específica dos campos do Material
+mat-form-field {
+  width: 100%;
+  font-size: 14px;
+
+  // Ajuste fino para ícones dentro do input (se tiver)
+  mat-icon {
+    color: #757575;
+  }
+}
+
+// ✨ Destaque para o Input de Valor
+.input-valor {
+  input {
+    font-weight: bold;
+    font-size: 1.1rem; // Aumenta um pouco a fonte
+    color: #2e7d32; // Verde escuro (sugestão para dinheiro)
+  }
+}
+
+// Estilo dos botões de ação no rodapé
+.actions-footer {
+  padding: 0 24px 20px 24px; // Espaçamento interno
+  
+  button {
+    text-transform: uppercase; // Estilo Material Design clássico
+    font-weight: 500;
+  }
+}
+
+// Ajuste do título para não colar no topo
+h2[mat-dialog-title] {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
