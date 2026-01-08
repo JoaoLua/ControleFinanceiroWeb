@@ -61,7 +61,6 @@ export class TransacoesComponent implements OnInit {
 
   carregarCategorias(): void {
     this.carregandoCategorias = true;
-
     this.categoriaService.getCategorias().subscribe({
       next: (data) => {
         this.categorias = data
