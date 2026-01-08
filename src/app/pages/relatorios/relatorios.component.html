@@ -1,0 +1,59 @@
+<div class="page-container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-text">
+            <h1>Central de Relatórios</h1>
+            <p>Exporte seus dados para controle e análise</p>
+        </div>
+    </header>
+
+    <mat-divider></mat-divider>
+
+    <!-- Grid de relatórios -->
+    <div class="reports-grid">
+
+        <mat-card class="report-card mat-elevation-z2">
+
+            <mat-card-header>
+                <div mat-card-avatar class="avatar-pdf">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                </div>
+
+                <mat-card-title>Extrato Financeiro</mat-card-title>
+                <mat-card-subtitle>
+                    Lista detalhada de transações
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                    Gera um PDF contendo todas as receitas e despesas do período,
+                    organizadas em uma tabela com saldo final.
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions align="end">
+                <button mat-flat-button color="primary" class="action-button" (click)="gerarExtrato()"
+                    [disabled]="loadingExtrato">
+
+                    <span class="button-content">
+                        <ng-container *ngIf="!loadingExtrato; else loading">
+                            <mat-icon>download</mat-icon>
+                            <span>Baixar PDF</span>
+                        </ng-container>
+
+                        <ng-template #loading>
+                            <mat-spinner diameter="18"></mat-spinner>
+                            <span>Gerando...</span>
+                        </ng-template>
+                    </span>
+
+                </button>
+            </mat-card-actions>
+
+
+        </mat-card>
+
+    </div>
+</div>

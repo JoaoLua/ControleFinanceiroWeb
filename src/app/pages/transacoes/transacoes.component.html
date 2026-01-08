@@ -14,8 +14,8 @@
           <mat-label>Tipo</mat-label>
           <mat-select formControlName="tipo">
             <mat-option [value]="null">Todos</mat-option>
-            <mat-option [value]="1">Receita</mat-option>
-            <mat-option [value]="2">Despesa</mat-option>
+            <mat-option [value]="0">Receita</mat-option>
+            <mat-option [value]="1">Despesa</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -82,9 +82,9 @@
             <th mat-header-cell *matHeaderCellDef>Tipo</th>
             <td mat-cell *matCellDef="let t">
               <span class="badge" 
-                [class.receita]="t.tipo === 1 || t.tipo === 'Receita'"
-                [class.despesa]="t.tipo === 2 || t.tipo === 'Despesa'">
-                {{ t.tipo === 1 ? 'Receita' : (t.tipo === 2 ? 'Despesa' : t.tipo) }}
+                [class.receita]="t.tipo === 0 || t.tipo === 'Receita'"
+                [class.despesa]="t.tipo === 1 || t.tipo === 'Despesa'">
+                {{ t.tipo === 0 ? 'Receita' : (t.tipo === 1 ? 'Despesa' : t.tipo) }}
               </span>
             </td>
           </ng-container>
@@ -103,9 +103,6 @@
             <td mat-cell *matCellDef="let t" class="actions-col">
               <button mat-icon-button color="primary" (click)="editar(t)" matTooltip="Editar">
                 <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" (click)="excluir(t)" matTooltip="Excluir">
-                <mat-icon>delete</mat-icon>
               </button>
             </td>
           </ng-container>

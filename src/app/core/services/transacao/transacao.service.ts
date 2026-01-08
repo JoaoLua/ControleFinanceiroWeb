@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
 export class TransacaoService {
   private readonly apiUrl = `${environment.apiUrl}/transacoes`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-    getTransacoes(filters?: {
+  getTransacoes(filters?: {
     tipo?: TipoTransacao;
     data?: Date;
     contaId?: number;
@@ -21,15 +21,14 @@ export class TransacaoService {
 
     let params = new HttpParams();
 
-    if (filters?.tipo) {
-      params = params.set('tipo', filters.tipo);
+    if (filters?.tipo !== null && filters?.tipo !== undefined) {
+      params = params.set('tipo', filters.tipo.toString());
     }
 
     if (filters?.data) {
-      params = params.set(
-        'data',
-        filters.data.toISOString()
-      );
+
+      const dataFormatada = this.formatarData(filters.data);
+      params = params.set('data', dataFormatada);
     }
 
     if (filters?.contaId) {
@@ -47,6 +46,14 @@ export class TransacaoService {
     request: CreateTransacaoRequest
   ): Observable<Transacao> {
     return this.http.post<Transacao>(this.apiUrl, request);
+  }
+
+  private formatarData(data: Date): string {
+    const ano = data.getFullYear();
+    const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+    const dia = data.getDate().toString().padStart(2, '0');
+
+    return `${ano}-${mes}-${dia}`;
   }
 
 }

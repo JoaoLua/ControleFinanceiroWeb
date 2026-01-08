@@ -26,7 +26,7 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => import('./pages/dashboard/dashboard.component')
           .then(m => m.DashboardComponent),
-          canActivate: [authGuard]
+        canActivate: [authGuard]
       },
       {
         path: 'transacoes',
@@ -40,6 +40,11 @@ export const routes: Routes = [
         path: 'categorias',
         loadComponent: () => import('./pages/categorias/categorias.component').then(m => m.CategoriasComponent)
       },
+      {
+        path: 'relatorios',
+        loadComponent: () => import('./pages/relatorios/relatorios.component').then(m => m.RelatoriosComponent)
+      },
+
       // Se o usuário acessar só "localhost:4200/", joga para dashboard
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]

@@ -54,13 +54,13 @@ salvar() {
     };
 
     if (this.data) {
-      // --- MODO EDIÇÃO ---
+      
       this.contaService.atualizarConta(this.data.id, request).subscribe({
         next: () => this.fecharComSucesso('Conta atualizada!'),
         error: (err) => this.tratarErro(err)
       });
     } else {
-      // --- MODO CRIAÇÃO ---
+      
       this.contaService.criarConta(request).subscribe({
         next: () => this.fecharComSucesso('Conta criada!'),
         error: (err) => this.tratarErro(err)
